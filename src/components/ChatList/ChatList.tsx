@@ -60,9 +60,9 @@ const ChatList: React.FC<ChatListProps> = ({ onChatSelect }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-screen">
+    <div className="flex flex-col md:flex-row w-1/2 md:w-full h-screen">
       <div className="w-full md:w-1/4 p-4 border-r bg-gray-100">
-        <div className="text-2xl font-bold mb-4">SuperDM Chat</div>
+        <div className="text-2xl font-bold mb-4">SuperDM</div>
         <div
           className={`cursor-pointer py-2 px-4 mb-2 rounded-lg transition ${
             viewMode === "all"

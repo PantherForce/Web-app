@@ -12,7 +12,7 @@ interface MessageProps {
 const Messages: React.FC<MessageProps> = ({ message }) => {
   return (
     <div className="p-4 bg-black-200 shadow-lg rounded-xl border  my-2">
-      <div className="flex justify-between items-center mb-2">
+      <div className="flex md:flex-row flex-col justify-between items-center mb-2">
         <p className="text-lg font-semibold text-blue-600">{message.sender}</p>
         <p className="text-sm text-gray-500">
           {new Date(message.timestamp).toLocaleString()}

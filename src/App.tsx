@@ -10,7 +10,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-full">
       <ChatList onChatSelect={handleChatSelect} />
       {selectedChatId && (
         <div className="w-1/2">
