@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchMessages, sendMessage, Message } from "../../api/index";
+import Messages from "./Messages";
 
 interface ChatWindowProps {
   chatId: string;
@@ -22,35 +23,28 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <div className="mt-4 p-4 overflow-y-auto">
+    <div className="flex flex-col h-full bg-gray-50 rounded-lg shadow-lg">
+      <div className="flex-grow overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
-          <div key={message.id} className="mb-2">
-            <div className="bg-gray-100 rounded-lg p-3">
-              <p className="text-lg">
-                <strong>{message.sender}:</strong> {message.text}
-              </p>
-              <p className="text-sm text-gray-500">{message.timestamp}</p>
-            </div>
-          </div>
+          <Messages key={message.id} message={message} />
         ))}
       </div>
-      <div className="p-4 border-t border-gray-300">
-        <div className="">
+      <div className="p-4 border-t border-gray-300 bg-white rounded-b-lg">
+        <div className="flex flex-col md:flex-row items-stretch md:items-center space-y-2 md:space-y-0 md:space-x-4">
           <input
             type="text"
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             placeholder="Type a message..."
-            className="border border-gray-300 p-2 w-full rounded-md"
+            className="flex-grow border border-gray-300 p-2 rounded-lg shadow-sm focus:outline-none focus:border-blue-400"
           />
+          <button
+            onClick={handleSendMessage}
+            className="bg-blue-500 p-2 text-white rounded-lg shadow hover:bg-blue-600 transition"
+          >
+            Send
+          </button>
         </div>
-        <button
-          onClick={handleSendMessage}
-          className="mt-2 bg-green-400 p-2 w-[80px] text-white rounded-md hover:bg-blue-600"
-        >
-          Send
-        </button>
       </div>
     </div>
   );

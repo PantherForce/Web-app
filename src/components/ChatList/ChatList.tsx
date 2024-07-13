@@ -61,26 +61,33 @@ const ChatList: React.FC<ChatListProps> = ({ onChatSelect }) => {
 
   return (
     <div className="flex flex-col md:flex-row w-full h-screen">
-      <div className="w-full md:w-1/4 p-4 border-r">
+      <div className="w-full md:w-1/4 p-4 border-r bg-gray-100">
+        <div className="text-2xl font-bold mb-4">SuperDM Chat</div>
         <div
-          className={`cursor-pointer py-2 px-4 ${
-            viewMode === "all" ? "bg-gray-200" : ""
+          className={`cursor-pointer py-2 px-4 mb-2 rounded-lg transition ${
+            viewMode === "all"
+              ? "bg-blue-500 text-white"
+              : "bg-white text-gray-700"
           }`}
           onClick={() => handleTabChange("all")}
         >
           All Chats
         </div>
         <div
-          className={`cursor-pointer py-2 px-4 ${
-            viewMode === "unread" ? "bg-gray-200" : ""
+          className={`cursor-pointer py-2 px-4 mb-2 rounded-lg transition ${
+            viewMode === "unread"
+              ? "bg-blue-500 text-white"
+              : "bg-white text-gray-700"
           }`}
           onClick={() => handleTabChange("unread")}
         >
           Unread Chats ({unreadChats.length})
         </div>
         <div
-          className={`cursor-pointer py-2 px-4 ${
-            viewMode === "bookmarked" ? "bg-gray-200" : ""
+          className={`cursor-pointer py-2 px-4 mb-2 rounded-lg transition ${
+            viewMode === "bookmarked"
+              ? "bg-blue-500 text-white"
+              : "bg-white text-gray-700"
           }`}
           onClick={() => handleTabChange("bookmarked")}
         >
@@ -88,7 +95,7 @@ const ChatList: React.FC<ChatListProps> = ({ onChatSelect }) => {
         </div>
       </div>
 
-      <div className="w-full md:w-full p-4">
+      <div className="w-full md:w-3/4 p-4 bg-white overflow-y-auto">
         {viewMode === "all" && renderChats(chats)}
         {viewMode === "unread" && renderChats(unreadChats)}
         {viewMode === "bookmarked" && renderChats(bookmarkedChats)}

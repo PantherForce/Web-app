@@ -14,8 +14,8 @@ const ChatItem: React.FC<ChatItemProps> = ({
 }) => {
   return (
     <div
-      className={`p-4 border-b cursor-pointer flex justify-between items-center ${
-        chat.isRead ? "" : "font-bold"
+      className={`p-4 mb-2 bg-white rounded-lg shadow-md border border-gray-200 cursor-pointer flex justify-between items-center transition hover:bg-blue-50 ${
+        chat.isRead ? "text-gray-700" : "font-bold text-black"
       }`}
       onClick={() => onSelect(chat.id)}
     >
@@ -23,11 +23,11 @@ const ChatItem: React.FC<ChatItemProps> = ({
         <img
           src={chat.profilePicture}
           alt={chat.name}
-          className="w-10 h-10 rounded-full mr-4"
+          className="w-12 h-12 rounded-full mr-4 shadow-md border-2 border-blue-100"
         />
         <div>
-          <div>{chat.name}</div>
-          <div className="text-sm text-gray-600">{chat.lastMessage}</div>
+          <div className="text-lg">{chat.name}</div>
+          <div className="text-sm text-gray-500">{chat.lastMessage}</div>
         </div>
       </div>
       <div className="flex items-center">
@@ -36,10 +36,11 @@ const ChatItem: React.FC<ChatItemProps> = ({
             e.stopPropagation();
             onToggleBookmark(chat.id);
           }}
-          className="ml-4 font-medium text-pink-500"
+          className={`ml-4 font-medium transition ${
+            chat.isBookmarked ? "text-yellow-500" : "text-gray-500"
+          }`}
         >
-          {chat.isBookmarked ? "Unbookmark" : "Bookmark"}{" "}
-          {/* Assumes isBookmarked is boolean */}
+          {chat.isBookmarked ? "★ Unbookmark" : "☆ Bookmark"}
         </button>
       </div>
     </div>
