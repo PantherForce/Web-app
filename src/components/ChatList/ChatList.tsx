@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Chat from "../../api/mock/chat";
+import { Chat } from "../../api/mock/chat";
 import { fetchChats } from "../../api/index";
-import ChatItem from "./CharItem"; // Corrected import path
+import ChatItem from "./CharItem";
 
 interface ChatListProps {
   onChatSelect: (id: string) => void;
@@ -11,7 +11,6 @@ const ChatList: React.FC<ChatListProps> = ({ onChatSelect }) => {
   const [chats, setChats] = useState<Chat[]>([]);
   const [unreadChats, setUnreadChats] = useState<Chat[]>([]);
   const [bookmarkedChats, setBookmarkedChats] = useState<Chat[]>([]);
-  const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"all" | "unread" | "bookmarked">(
     "all"
   );
@@ -28,7 +27,6 @@ const ChatList: React.FC<ChatListProps> = ({ onChatSelect }) => {
   }, []);
 
   const handleChatSelect = (id: string) => {
-    setSelectedChatId(id);
     onChatSelect(id);
 
     const updatedChats = chats.map((chat) =>
@@ -40,7 +38,6 @@ const ChatList: React.FC<ChatListProps> = ({ onChatSelect }) => {
 
   const handleTabChange = (mode: "all" | "unread" | "bookmarked") => {
     setViewMode(mode);
-    setSelectedChatId(null);
   };
 
   const toggleBookmark = (id: string) => {

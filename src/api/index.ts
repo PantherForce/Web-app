@@ -1,26 +1,33 @@
-type Chat = {
+export type Chat = {
   id: string;
   name: string;
   profilePicture: string;
   lastMessage: string;
+  isRead: boolean;
+  professionalDetails: string;
+  isBookmarked?: boolean;
 };
 
-type Message = {
+export type Message = {
   id: string;
   text: string;
   timestamp: string;
   sender: string;
 };
 
-import { chats } from "./mock/chat";
-import { messages } from "./mock/messages";
+import { chat } from "./mock/chat";
+import { message } from "./mock/messages";
 
-type Messages = {
+export type Messages = {
   [chatId: string]: Message[];
 };
 
-const mockChats: Chat[] = chats;
-const mockMessages: Messages = messages;
+const mockChats: Chat[] = chat.map((c) => ({
+  ...c,
+  isRead: c.isRead,
+}));
+
+const mockMessages: Messages = message;
 
 export const fetchChats = async (): Promise<Chat[]> => {
   return new Promise((resolve) => {

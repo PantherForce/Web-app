@@ -1,5 +1,4 @@
-// Mock message data
-export const messages = {
+export const message = {
   "1": [
     {
       id: "1",

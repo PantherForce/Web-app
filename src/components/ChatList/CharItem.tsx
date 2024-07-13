@@ -1,5 +1,5 @@
 import React from "react";
-import { Chat } from "../../api/mock/chat";
+import { Chat } from "../../api/index";
 
 interface ChatItemProps {
   chat: Chat;
@@ -36,9 +36,10 @@ const ChatItem: React.FC<ChatItemProps> = ({
             e.stopPropagation();
             onToggleBookmark(chat.id);
           }}
-          className="ml-4 text-blue-500"
+          className="ml-4 font-medium text-pink-500"
         >
-          {chat.isBookmarked ? "Unbookmark" : "Bookmark"}
+          {chat.isBookmarked ? "Unbookmark" : "Bookmark"}{" "}
+          {/* Assumes isBookmarked is boolean */}
         </button>
       </div>
     </div>

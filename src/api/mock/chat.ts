@@ -1,4 +1,14 @@
-export const chats = [
+export type Chat = {
+  id: string;
+  name: string;
+  profilePicture: string;
+  lastMessage: string;
+  isRead: boolean;
+  professionalDetails: string;
+  isBookmarked?: boolean;
+};
+
+export const chat: Chat[] = [
   {
     id: "1",
     name: "Hridyansh Sahu",

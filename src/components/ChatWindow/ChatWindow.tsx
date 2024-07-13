@@ -47,7 +47,7 @@ const ChatWindow: React.FC<ChatWindowProps> = ({ chatId }) => {
         </div>
         <button
           onClick={handleSendMessage}
-          className="mt-2 bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
+          className="mt-2 bg-green-400 p-2 w-[80px] text-white rounded-md hover:bg-blue-600"
         >
           Send
         </button>
